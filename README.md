@@ -4,6 +4,9 @@
 
 This project focuses on distinguishing AI-generated and human-written scientific texts using machine learning techniques. The core of this work involves two main components: a feature extraction model and a Support Vector Machine (SVM) classifier. This work was part of the course Human Language Technologies (HLT), lectured by Prof. Stapparava Carlo @unitn. It is part of my final exam submission.
 
+## Data
+The necessary data is stored as a shared folder on my GoogleDrive: https://drive.google.com/drive/folders/1-4G44bGfXkh85DPWaFzT0gIM5282CE7C?usp=sharing
+
 ## Feature Extraction Model
 
 The feature extraction model is designed to analyze textual data and derive various linguistic features. These features, which include both regex-based and statistical metrics, are used to capture distinctive patterns and structures in the text that might indicate whether a text is AI-generated or human-written.

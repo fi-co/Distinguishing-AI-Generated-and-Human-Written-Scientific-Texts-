@@ -15,13 +15,31 @@ The feature extraction model is designed to analyze textual data and derive vari
 - **Regex-Based Features:** Detection of specific punctuation marks, use of connectors, and certain key terms that might reflect stylistic choices.
 - **Statistical Features:** Measures such as sentence length standard deviation, word count, and lexical diversity.
 
-The feature extraction model was inspired by the work of Desaire et al., who originally implemented a similar model in R. Their approach served as a foundation for developing the feature extraction scripts used in this project.
+| Feature Category         | Feature Name                      | Description                                                                                                     | Regex Used                                   | Statistical Method Used     |
+| ------------------------ | --------------------------------- | --------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ | ---------------------------------------------- |
+| **Pattern Matching**     | Contains Colon Semicolon          | Detects the presence of colons and semicolons in the text.                                                     | `[:;]`                                                    | N/A                                            |
+|                          | Contains Question Mark            | Identifies sentences that pose questions.                                                                       | `\?`                                                      | N/A                                            |
+|                          | Contains Apostrophe               | Marks the use of contractions or possessives.                                                                  | `\'`                                                      | N/A                                            |
+|                          | Contains "although"               | Captures the presence of the word "although".                                                                  | `although`                                                 | N/A                                            |
+|                          | Contains "however"                | Captures the presence of the word "however".                                                                   | `however`                                                  | N/A                                            |
+|                          | Contains "delve"                  | Captures the presence of the word "delve".                                                                     | `delve`                                                    | N/A                                            |
+|                          | Contains Numbers                  | Flags the presence of numbers.                                                                                | `\d`                                                      | N/A                                            |
+|                          | Contains "et"                     | Identifies the use of the Latin abbreviation "et".                                                              | `et`                                                       | N/A                                            |
+| **Statistical Analysis** | Sentences per Paragraph           | Captures the average number of sentences within paragraphs.                                                     | N/A                                                        | Average                                        |
+|                          | Sentence Length Std               | Measures the standard deviation in sentence length.                                                             | N/A                                                        | Standard Deviation                             |
+|                          | Word Count                        | Gives the total number of words in a text.                                                                      | N/A                                                        | Sum                                            |
+|                          | Average Sentence Length           | Calculates the mean length of sentences.                                                                        | N/A                                                        | Average                                        |
+|                          | Lexical Diversity                 | Represents the richness of the vocabulary used in the text.                                                    | N/A                                                        | (Number of Unique Words) / (Total Number of Words) |
+|                          | Capitals to Periods Ratio         | Captures the frequency of capital letters relative to the number of sentences.                                    | N/A                                                        | (Number of Capital Letters) / (Number of Periods)  |
+
+
+The feature extraction model was inspired by the work of Desaire et al., who originally implemented a similar model in R. Their approach served as a foundation for developing the feature extraction scripts used in this project. Of course, I later added my personal touch using out-of-the-shelf regex and stats (after testing their capacity to maximize variance between categories).
 
 **Credits:** The original concept and R code for feature extraction were derived from Desaire et al., as detailed in their paper *"Distinguishing academic science writing from humans or ChatGPT with over 99% accuracy using off-the-shelf machine learning tools"* (Cell Reports Physical Science, 2023), https://doi.org/10.1016/j.xcrp.2023.101426. 
 
 ## Classifier (SVM)
 
-After extracting the relevant features, the next step involves classifying the text as either AI-generated or human-written. This is accomplished using a Support Vector Machine (SVM), a robust classifier well-suited for binary classification tasks. The SVM is trained on the extracted features, learning to distinguish between the two classes with high accuracy.
+After extracting the relevant features, the next step involves classifying the text as either AI-generated or human-written. This is accomplished using a linear Support Vector Machine (SVM), a simple yet robust classifier, well-suited for binary classification tasks. The SVM is trained on the extracted features, learning to distinguish between the two classes with high accuracy.
 
 
 ## Conclusion
